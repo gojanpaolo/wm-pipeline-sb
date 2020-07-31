@@ -8,5 +8,5 @@ jobs:
     - uses: actions/checkout@v2
     - uses: microsoft/setup-msbuild@v1.0.1
     - uses: NuGet/setup-nuget@v1.0.2
-    - run: nuget restore WebApplication1/WebApplication3/WebApplication3.csproj
+    - run: nuget restore WebApplication1/WebApplication1.sln
     - run: msbuild WebApplication1/WebApplication3/WebApplication3.csproj
