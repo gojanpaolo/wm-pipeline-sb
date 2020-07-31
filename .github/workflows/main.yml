@@ -3,10 +3,13 @@ on:
     branches: [ master ]
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: self-hosted
+#    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: microsoft/setup-msbuild@v1.0.1
-    - uses: NuGet/setup-nuget@v1.0.2
-    - run: nuget restore WebApplication1/WebApplication1.sln
-    - run: msbuild WebApplication1/WebApplication3/WebApplication3.csproj
+#    - uses: microsoft/setup-msbuild@v1.0.1
+#    - uses: NuGet/setup-nuget@v1.0.2
+#    - run: nuget restore WebApplication1/WebApplication1.sln
+#    - run: msbuild WebApplication1/WebApplication3/WebApplication3.csproj
+    - run: | 
+        & "C:/Program Files (x86)/IIS/Microsoft Web Deploy V3/msdeploy.exe" -verb:sync -source:contentPath="$env:github_workspace" -dest:contentPath="site"
