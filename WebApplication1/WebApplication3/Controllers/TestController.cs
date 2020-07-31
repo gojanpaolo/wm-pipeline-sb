@@ -4,6 +4,11 @@ namespace WebApplication3.Controllers
 {
     public class TestController : ApiController
     {
-        public string Get() => "1";
+        public string Get() => 
+#if DEBUG
+        "debug";
+#else
+        "d";
+#endif      
     }
 }
