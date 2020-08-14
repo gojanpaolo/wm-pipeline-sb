@@ -18,5 +18,6 @@ jobs:
         foo: "a"
         Store: "b"
         validationKey: "c"
+        <system.web><machineKey>: "1"
     - run: | 
         & "C:/Program Files (x86)/IIS/Microsoft Web Deploy V3/msdeploy.exe" -verb:sync -source:contentPath="$env:github_workspace/WebApplication1/WebApplication3/obj/Release/Package/PackageTmp" -dest:contentPath="site"
