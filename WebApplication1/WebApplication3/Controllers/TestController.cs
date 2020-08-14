@@ -8,7 +8,7 @@ namespace WebApplication3.Controllers
 #if DEBUG
         "debug";
 #else
-        "d";
+        "e";
 #endif      
     }
 }
