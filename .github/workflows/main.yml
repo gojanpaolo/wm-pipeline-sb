@@ -13,7 +13,7 @@ jobs:
     - run: msbuild WebApplication1/WebApplication3/WebApplication3.csproj /property:Configuration=Release /p:DeployOnBuild=true
     - uses: microsoft/variable-substitution@v1 
       with:
-        files: 'WebApplication1/WebApplication3/Web.config'
+        files: '${{ github.workspace }}/WebApplication1/WebApplication3/Web.config'
       env:
         configuration.appSettings.foo: "b"
     - run: | 
