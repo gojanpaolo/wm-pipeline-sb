@@ -10,7 +10,7 @@ jobs:
     - uses: microsoft/setup-msbuild@v1.0.1
     - uses: NuGet/setup-nuget@v1.0.2
     - run: nuget restore WebApplication1/WebApplication1.sln
-    - run: msbuild WebApplication1/ConsoleApp1/ConsoleApp1.csproj
+    - run: msbuild WebApplication1/ConsoleApp1/ConsoleApp1.csproj /property:Configuration=Release
     # - run: msbuild WebApplication1/WebApplication3/WebApplication3.csproj /property:Configuration=Release /p:DeployOnBuild=true
     # - uses: gojanpaolo/variable-substitution@master 
     #   with:
