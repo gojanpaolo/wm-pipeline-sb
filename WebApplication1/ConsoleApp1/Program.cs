@@ -6,7 +6,9 @@ namespace ConsoleApp1
     {
         private static void Main()
         {
+#if !DEBUG
             Console.WriteLine("my console app");
+#endif
             Console.ReadLine();
         }
     }
