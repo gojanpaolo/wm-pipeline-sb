@@ -12,7 +12,7 @@ jobs:
         dotnet-version: '3.1.x'
     - run: |
         dotnet tool install --global dotnet-xdt --version 2.2.0
-        dotnet xdt --source "$env:github_workspace/Web.config" --transform "$env:github_workspace/Web.Qa.config" --output final.xml
+        dotnet xdt --source "$env:github_workspace/Web.config" --transform "$env:github_workspace/Web.Qa.config" --output "$env:github_workspace/Web.config"
     # - uses: microsoft/setup-msbuild@v1.0.1
     # - uses: NuGet/setup-nuget@v1.0.2
     # - run: nuget restore WebApplication1/WebApplication1.sln
