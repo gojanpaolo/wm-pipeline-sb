@@ -7,10 +7,16 @@ jobs:
 #    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: microsoft/setup-msbuild@v1.0.1
-    - uses: NuGet/setup-nuget@v1.0.2
-    - run: nuget restore WebApplication1/WebApplication1.sln
-    - run: msbuild WebApplication1/ConsoleApp1/ConsoleApp1.csproj /property:Configuration=Release
+    - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+    - run: |
+        dotnet tool install dotnet-xdt --version 2.2.0
+        dotnet xdt --source "$env:github_workspace/Web.config" --transform "$env:github_workspace/Web.Qa.config" --output final.xml
+    # - uses: microsoft/setup-msbuild@v1.0.1
+    # - uses: NuGet/setup-nuget@v1.0.2
+    # - run: nuget restore WebApplication1/WebApplication1.sln
+    # - run: msbuild WebApplication1/ConsoleApp1/ConsoleApp1.csproj /property:Configuration=Release
     # - run: msbuild WebApplication1/WebApplication3/WebApplication3.csproj /property:Configuration=Release /p:DeployOnBuild=true
     # - uses: gojanpaolo/variable-substitution@master 
     #   with:
