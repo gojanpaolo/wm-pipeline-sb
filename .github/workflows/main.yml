@@ -10,9 +10,11 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '3.1.x'
-    - run: |
+    - env:
+        WEB_QA_CONFIG: ${{ secrets.WEB_QA_CONFIG }} 
+      run: |
         dotnet tool install --global dotnet-xdt --version 2.2.0
-        New-Item -Path "$env:github_workspace" -Name "text.txt" -ItemType "file" -Value "aaa"
+        New-Item -Path "$env:github_workspace" -Name "text.txt" -ItemType "file" -Value "$env:WEB_QA_CONFIG"
         dotnet xdt --source "$env:github_workspace/Web.config" --transform "$env:github_workspace/Web.Qa.config" --output "$env:github_workspace/Web.config"
     # - uses: microsoft/setup-msbuild@v1.0.1
     # - uses: NuGet/setup-nuget@v1.0.2
