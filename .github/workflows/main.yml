@@ -16,7 +16,7 @@ jobs:
         WEB_QA_CONFIG: ${{ secrets.WEB_QA_CONFIG }} 
       run: |
         function Hello-Jan {
-          Write-Hose "Hello Jan"
+          Write-Host "Hello Jan"
         }
         dotnet tool install --global dotnet-xdt
         Hello-Jan
