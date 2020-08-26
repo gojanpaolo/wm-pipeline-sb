@@ -15,9 +15,15 @@ jobs:
     - env:
         WEB_QA_CONFIG: ${{ secrets.WEB_QA_CONFIG }} 
       run: |
+        function Hello-Jan {
+          Write-Hose "Hello Jan"
+        }
         dotnet tool install --global dotnet-xdt
+        Hello-Jan
         New-Item -Path $env:github_workspace -Name Web.Qa.config -Value $env:WEB_QA_CONFIG
+        Hello-Jan
         dotnet xdt --source $env:web_config --transform "$env:github_workspace\Web.Qa.config" --output $env:web_config
+        Hello-Jan
     # - uses: microsoft/setup-msbuild@v1.0.1
     # - uses: NuGet/setup-nuget@v1.0.2
     # - run: nuget restore WebApplication1/WebApplication1.sln
