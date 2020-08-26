@@ -10,6 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 'x'
     - env:
         my_array: ${{ secrets.WEB_QA_CONFIG }} ${{ secrets.WEB_QA_CONFIG }} 
         DB_CONFIG: a
