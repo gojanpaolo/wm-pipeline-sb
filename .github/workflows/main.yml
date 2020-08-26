@@ -24,11 +24,10 @@ jobs:
         "DB_CONFIG", "MACHINEKEY_CONFIG", "STRIPE_CONFIG", "WORKMAX_CONFIG" | % {
           Write-Host $_
         }
-
         "DB_CONFIG", "MACHINEKEY_CONFIG", "STRIPE_CONFIG", "WORKMAX_CONFIG" | 
-          % {
-            New-Item -Path $env:github_workspace -Name $_ -Value [System.Environment]::GetEnvironmentVariable($_)
-          }
+        % {
+          New-Item -Path $env:github_workspace -Name $_ -Value [System.Environment]::GetEnvironmentVariable($_)
+        }
     - env:
         WEB_QA_CONFIG: ${{ secrets.WEB_QA_CONFIG }} 
       run: |
