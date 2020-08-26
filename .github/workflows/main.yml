@@ -4,7 +4,7 @@ on:
 jobs:
   build:
     env:
-      web_config: ${{ github_workspace }}/Web.config
+      web_config: ${{ github.workspace }}/Web.config
     runs-on: self-hosted
 #    runs-on: windows-latest
     steps:
