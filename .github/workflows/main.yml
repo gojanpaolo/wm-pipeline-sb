@@ -13,22 +13,6 @@ jobs:
       with:
         dotnet-version: 'x.x'
     - env:
-        my_array: ${{ secrets.WEB_QA_CONFIG }} ${{ secrets.WEB_QA_CONFIG }} 
-        DB_CONFIG: a
-        MACHINEKEY_CONFIG: b
-        STRIPE_CONFIG: c
-        WORKMAX_CONFIG: d
-      run: |
-        Write-Host "ccc"
-        $my_array
-        "DB_CONFIG", "MACHINEKEY_CONFIG", "STRIPE_CONFIG", "WORKMAX_CONFIG" | % {
-          Write-Host $_
-        }
-        "DB_CONFIG", "MACHINEKEY_CONFIG", "STRIPE_CONFIG", "WORKMAX_CONFIG" | 
-        % {
-          New-Item -Path $env:github_workspace -Name $_ -Value [System.Environment]::GetEnvironmentVariable($_)
-        }
-    - env:
         WEB_QA_CONFIG: ${{ secrets.WEB_QA_CONFIG }} 
       run: |
         function Hello-Jan {
