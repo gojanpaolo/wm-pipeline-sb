@@ -13,17 +13,24 @@ jobs:
       with:
         dotnet-version: '3.1.x'
     - env:
+        my_array: ['a', 'b']
+      run: |
+        Write-Host 'ccc'
+        my_array
+    - env:
         WEB_QA_CONFIG: ${{ secrets.WEB_QA_CONFIG }} 
       run: |
+        function Hello-Jan {
+          Write-Host "Hello Jan"
+        }
         dotnet tool install --global dotnet-xdt
         Hello-Jan
         New-Item -Path $env:github_workspace -Name Web.Qa.config -Value $env:WEB_QA_CONFIG
         Hello-Jan
         dotnet xdt --source $env:web_config --transform "$env:github_workspace\Web.Qa.config" --output $env:web_config
         Hello-Jan
-        function Hello-Jan {
-          Write-Host "Hello Jan"
-        }
+    - env:
+        my_matrix:
     # - uses: microsoft/setup-msbuild@v1.0.1
     # - uses: NuGet/setup-nuget@v1.0.2
     # - run: nuget restore WebApplication1/WebApplication1.sln
