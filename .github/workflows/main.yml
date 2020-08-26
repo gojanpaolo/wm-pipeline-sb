@@ -15,8 +15,12 @@ jobs:
     - env:
         my_array: ${{ secrets.WEB_QA_CONFIG }} ${{ secrets.WEB_QA_CONFIG }} 
       run: |
-        Write-Host 'ccc'
-        my_array
+        Write-Host "ccc"
+        $my_array
+        "DB_CONFIG", "MACHINEKEY_CONFIG", "STRIPE_CONFIG", "WORKMAX_CONFIG" | 
+          % {
+            Write-Host $_
+          }
     - env:
         WEB_QA_CONFIG: ${{ secrets.WEB_QA_CONFIG }} 
       run: |
