@@ -4,7 +4,7 @@ on:
 jobs:
   build:
     env:
-      web_config: ${{ github.workspace }}/Web.config
+      web_config: ${{ github.workspace }}\Web.config
     runs-on: self-hosted
 #    runs-on: windows-latest
     steps:
@@ -16,8 +16,8 @@ jobs:
         WEB_QA_CONFIG: ${{ secrets.WEB_QA_CONFIG }} 
       run: |
         dotnet tool install --global dotnet-xdt
-        New-Item -Path "$env:github_workspace" -Name "Web.Qa.config" -ItemType "file" -Value "$env:WEB_QA_CONFIG"
-        dotnet xdt --source $env:web_config --transform "$env:github_workspace/Web.Qa.config" --output $env:web_config
+        New-Item -Path $env:github_workspace -Name Web.Qa.config -Value $env:WEB_QA_CONFIG
+        dotnet xdt --source $env:web_config --transform "$env:github_workspace\Web.Qa.config" --output $env:web_config
     # - uses: microsoft/setup-msbuild@v1.0.1
     # - uses: NuGet/setup-nuget@v1.0.2
     # - run: nuget restore WebApplication1/WebApplication1.sln
