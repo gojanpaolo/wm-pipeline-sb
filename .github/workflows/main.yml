@@ -15,6 +15,7 @@ jobs:
     - env:
         WEB_QA_CONFIG: ${{ secrets.WEB_QA_CONFIG }} 
       run: |
+        dotnet tool install --global dotnet-xdt
         New-Item -Path "$env:github_workspace" -Name "Web.Qa.config" -ItemType "file" -Value "$env:WEB_QA_CONFIG"
         dotnet xdt --source $env:web_config --transform "$env:github_workspace/Web.Qa.config" --output $env:web_config
     # - uses: microsoft/setup-msbuild@v1.0.1
