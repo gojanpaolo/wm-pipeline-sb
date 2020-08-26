@@ -21,6 +21,10 @@ jobs:
       run: |
         Write-Host "ccc"
         $my_array
+        "DB_CONFIG", "MACHINEKEY_CONFIG", "STRIPE_CONFIG", "WORKMAX_CONFIG" | % {
+          Write-Host $_
+        }
+
         "DB_CONFIG", "MACHINEKEY_CONFIG", "STRIPE_CONFIG", "WORKMAX_CONFIG" | 
           % {
             New-Item -Path $env:github_workspace -Name $_ -Value [System.Environment]::GetEnvironmentVariable($_)
