@@ -13,7 +13,7 @@ jobs:
       with:
         dotnet-version: '3.1.x'
     - env:
-        my_array: ['a', 'b']
+        my_array: ${{ secrets.WEB_QA_CONFIG }} ${{ secrets.WEB_QA_CONFIG }} 
       run: |
         Write-Host 'ccc'
         my_array
