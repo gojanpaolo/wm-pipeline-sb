@@ -5,10 +5,12 @@ jobs:
   build:
     env:
       web_config: ${{ github.workspace }}\Web.config
-    # runs-on: self-hosted
-    runs-on: windows-latest
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+      with:
+        repository: gojanpaolo/actions-demo
     # - uses: actions/setup-dotnet@v1
     #   with:
     #     dotnet-version: 'x.x'
@@ -32,10 +34,10 @@ jobs:
     #     validationKey: "z"
     # - run: | 
     #     & "C:/Program Files (x86)/IIS/Microsoft Web Deploy V3/msdeploy.exe" -verb:sync -source:contentPath="$env:github_workspace/WebApplication1/WebApplication3/obj/Release/Package/PackageTmp" -dest:contentPath="site"
-    - uses: garygrossgarten/github-action-scp@release
-      with:
-        local: README.md
-        remote: /JanTest
-        host: ${{ secrets.wm_ec2_host }}
-        username: ${{ secrets.wm_ec2_username }}
-        password: ${{ secrets.wm_ec2_password }}
+    # - uses: garygrossgarten/github-action-scp@release
+    #   with:
+    #     local: README.md
+    #     remote: /JanTest
+    #     host: ${{ secrets.wm_ec2_host }}
+    #     username: ${{ secrets.wm_ec2_username }}
+    #     password: ${{ secrets.wm_ec2_password }}
